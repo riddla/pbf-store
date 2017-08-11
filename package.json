@@ -4,13 +4,16 @@
   "version": "0.0.18",
   "dependencies": {
     "husky": "^0.14.3",
+    "immutable": "^3.8.1",
     "lint-staged": "^4.0.3",
+    "pouchdb-browser": "^6.3.4",
     "prettier": "^1.5.3",
     "react": "15.6.1",
     "react-dom": "15.6.1",
     "react-redux": "5.0.6",
     "redux": "^3.7.2",
-    "redux-pouchdb-plus": "0.8.1"
+    "redux-logger": "^3.0.6",
+    "redux-pouchdb-plus": "^0.8.1"
   },
   "devDependencies": {
     "eslint-config-prettier": "^2.3.0",

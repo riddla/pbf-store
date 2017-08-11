@@ -1,3 +1,4 @@
+import { persistentReducer } from 'redux-pouchdb-plus';
 import { ADD_REPETITION } from './../actiontypes';
 
 const repetitions = (state = [], action) => {
@@ -15,4 +16,4 @@ const repetitions = (state = [], action) => {
   }
 };
 
-export default repetitions;
+export default persistentReducer(repetitions);
