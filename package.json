@@ -1,8 +1,11 @@
 {
   "name": "riddla-pbf-store",
-  "description": null,
+  "description": "",
   "version": "0.0.18",
   "dependencies": {
+    "husky": "^0.14.3",
+    "lint-staged": "^4.0.3",
+    "prettier": "^1.5.3",
     "react": "15.6.1",
     "react-dom": "15.6.1",
     "react-redux": "5.0.6",
@@ -10,12 +13,20 @@
     "redux-pouchdb-plus": "0.8.1"
   },
   "devDependencies": {
+    "eslint-config-prettier": "^2.3.0",
     "react-scripts": "1.0.0"
   },
   "scripts": {
     "start": "react-scripts start",
     "build": "react-scripts build",
     "test": "react-scripts test --env=jsdom",
-    "eject": "react-scripts eject"
+    "eject": "react-scripts eject",
+    "precommit": "lint-staged"
+  },
+  "lint-staged": {
+    "src/**/*.{js,jsx,json,css}": [
+      "prettier --single-quote --write",
+      "git add"
+    ]
   }
 }
