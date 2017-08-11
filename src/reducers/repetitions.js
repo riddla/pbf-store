@@ -1,4 +1,4 @@
-import {ADD_REPETITION} from './../actiontypes'
+import { ADD_REPETITION } from './../actiontypes';
 
 const repetitions = (state = [], action) => {
   switch (action.type) {
@@ -9,10 +9,10 @@ const repetitions = (state = [], action) => {
           id: action.id,
           createdAt: action.createdAt
         }
-      ]
+      ];
     default:
-      return state
+      return state;
   }
-}
+};
 
-export default repetitions
+export default repetitions;
