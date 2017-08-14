@@ -11,7 +11,7 @@ export const addRepetition = (exercise, createdAt) => {
   };
 };
 
-export const deleteRepetition = (id, createdAt) => ({
+export const deleteRepetition = id => ({
   type: DELETE_REPETITION,
   id
 });

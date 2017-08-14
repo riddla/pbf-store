@@ -1,33 +1,36 @@
 import React from 'react';
+import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
 import { addRepetition } from '../actions';
 
-let AddRepetition = ({ dispatch }) => {
-  let input;
-
+let AddRepetition = ({ dispatch, exercises, onExerciseClick }) => {
   return (
-    <div>
-      <form
-        onSubmit={e => {
-          e.preventDefault();
-          if (!input.value.trim()) {
-            return;
-          }
-          const CREATION_DATETIME = new Date().toISOString();
-          dispatch(addRepetition(input.value, CREATION_DATETIME));
-          input.value = '';
-        }}
-      >
-        <input
-          ref={node => {
-            input = node;
-          }}
-        />
-        <button type="submit">Add Repetition</button>
-      </form>
-    </div>
+    <ul>
+      {exercises.map(exercise =>
+        <li
+          key={exercise.id}
+          onClick={() => onExerciseClick(exercise.id, new Date().toISOString())}
+        >
+          {exercise.title}
+        </li>
+      )}
+    </ul>
   );
 };
-AddRepetition = connect()(AddRepetition);
+
+AddRepetition.propTypes = {
+  exercises: PropTypes.array.isRequired,
+  onExerciseClick: PropTypes.func.isRequired
+};
+
+const mapStateToProps = state => ({
+  exercises: state.exercises
+});
+
+const mapDispatchToProps = {
+  onExerciseClick: addRepetition
+};
+
+AddRepetition = connect(mapStateToProps, mapDispatchToProps)(AddRepetition);
 
 export default AddRepetition;
