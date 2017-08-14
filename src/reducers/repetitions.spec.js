@@ -1,9 +1,15 @@
 import repetitions from './repetitions';
 
-const DUMMY_ID = 'founder';
+const DUMMY_ID = 'repetion_founder_1';
 const DUMMY_CREATION_DATETIME = new Date().toISOString();
 const EXISTING_REPETITION = {
-  id: 'founder',
+  id: DUMMY_ID,
+  exercise: 'founder',
+  createdAt: DUMMY_CREATION_DATETIME
+};
+const EXISTING_REPETITION_2 = {
+  id: 'repetition_founder_2',
+  exercise: 'founder',
   createdAt: DUMMY_CREATION_DATETIME
 };
 
@@ -39,5 +45,20 @@ describe('repetitions reducer', () => {
         createdAt: DUMMY_CREATION_DATETIME
       }
     ]);
+  });
+
+  it('should handle DELETE_REPETITION', () => {
+    expect(
+      repetitions([EXISTING_REPETITION], {
+        type: 'DELETE_REPETITION',
+        id: DUMMY_ID
+      })
+    ).toEqual([]);
+    expect(
+      repetitions([EXISTING_REPETITION, EXISTING_REPETITION_2], {
+        type: 'DELETE_REPETITION',
+        id: DUMMY_ID
+      })
+    ).toEqual([EXISTING_REPETITION_2]);
   });
 });

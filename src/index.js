@@ -11,6 +11,9 @@ import PouchDB from 'pouchdb-browser';
 import reducer from './reducers';
 import logger from 'redux-logger';
 
+PouchDB.debug.enable('*');
+window.PouchDB = PouchDB;
+
 const db = new PouchDB('pbf_repititions');
 
 //optional
